@@ -3,14 +3,14 @@
 /* -- Conseils --
 -----------------
 - prendre son temps
-- d�composer le travail en petites t�ches (�crirela requ�te, puis faire la boucle, ou r�cup�rer les donn�es avant de les ins�rer en DB).
-- ne pas h�siter � s'entraider
-- ne pas rester bloquer + de 5 minutes => me poser une question :)
+- décomposer le travail en petites tâches (écrirela requête, puis faire la boucle, ou récupérer les données avant de les insérer en DB).
+- ne pas hésiter à s'entraider
+- ne pas rester bloqué + de 5 minutes => me poser une question :)
 */
 
 /* -- Part 1 = Organisation --
 ------------------------------
-- cr�er l'arborescence suivante :
+- créer l'arborescence suivante :
 	inc/
 		config.php
 		db.php
@@ -33,24 +33,27 @@
 		edit.php
 
 - inc/config.php :
-	* cr�er un tableau $config avec en valeurs les donn�es n�cessaires � la connexion � la DB (host, username, password, database)
+	* créer un tableau $config avec en valeurs les données nécessaires à la connexion à la DB (host, username, password, database)
 	* inclure les fichiers db.php et functions.php
-	
+
 - inc/db.php :
-	* �crire le code de connexion � la base de donn�es (PDO + dsn) en se basant sur les valeurs du tableau $config
-		
+	* écrire le code de connexion à la base de données (PDO + dsn)
+ en se basant sur les valeurs du tableau $config
+
 - inclure le fichier de config dans chaque fichier "public"
 
 - view/header.php :
-	* mettre en place un menu en haut de page (bootstrap est pas mal ^^) avec les liens suivants :
+	* mettre en place un menu en haut de page (bootstrap est pas mal ^^)
+ avec les liens suivants :
 		** Home => index.php
 		** Toutes les sessions => index.php
-		** Toutes les �tudiants => list.php
-		** Ajout d'un �tudiant => add.php
-		
+		** Toutes les étudiants => list.php
+		** Ajout d'un étudiant => add.php
+
 - view/footer.php :
-	* mettre un footer avec un copyright et l'ann�e courante => � 2017 | Tous droits r�serv�s
-	
+	* mettre un footer avec un copyright et l'année courante => © 2017 |
+ * Tous droits réservés
+
 - public/index.php
 	* en fin de script, inclure les vues "header", "home" & "footer"
 */
@@ -60,9 +63,9 @@
 
 - public/list.php :
 	* en fin de script, inclure les vues "header" & "footer"
-	* r�cup�rer toutes les informations sur tous les �tudiants en DB
-	* inclure la vue correspondant � la page "list"
-	* afficher les informations (id, nom, pr�nom, email et date de naissance) sous forme de tableau (<table>). Attention, l'affichage se fait dans la vue (view)
+	* récupérer toutes les informations sur tous les étudiants en DB
+	* inclure la vue correspondant à la page "list"
+	* afficher les informations (id, nom, prénom, email et date de naissance) sous forme de tableau (<table>). Attention, l'affichage se fait dans la vue (view)
 
 */
 
@@ -71,30 +74,30 @@
 
 - public/list.php :
 	* pour chaque ligne du tableau (<table>), ajouer un bouton (lien) qui envoie sur la page student
-	
+
 - public/student.php :
-	* r�cup�rer toutes les informations pour l'�tudiant sp�cifi�
-	* inclure la vue correspondant � la page "student"
-	* afficher les informations (id, nom, pr�nom, email, date de naissance, age, ville, sympathie, num�ro et nom de session). Attention, l'affichage se fait dans la vue (view) et je ne veux pas de tableau (<table>)
+	* récupérer toutes les informations pour l'étudiant spécifié
+	* inclure la vue correspondant à la page "student"
+	* afficher les informations (id, nom, prénom, email, date de naissance, age, ville, sympathie, numéro et nom de session). Attention, l'affichage se fait dans la vue (view) et je ne veux pas de tableau (<table>)
 
 */
 
 /* -- Part 4 = Page add/ajout --
 --------------------------------
-	
+
 - public/add.php :
-	* inclure la vue correspondant � la page "add"
-	* dans la vue, �crire le formulaire HTML permettant de saisir les donn�es suivantes sur un student :
-		nom, pr�nom
-	* apr�s soumissions du formulaire :
-		** r�cup�rer les donn�es envoy�es en POST par le formulaire
-		** traiter et valider les donn�es
-		** si toutes les donn�es sont valides, ajouter en DB puis rediriger sur la page "student" de l'�tudiant ajout�
-	* r�cup�rer toutes les villes de la DB (ou utiliser l'array)
-	* r�cup�rer toutes les sessions de la DB
+	* inclure la vue correspondant à la page "add"
+	* dans la vue, écrire le formulaire HTML permettant de saisir les données suivantes sur un student :
+		nom, prénom
+	* après soumissions du formulaire :
+		** récupérer les données envoyées en POST par le formulaire
+		** traiter et valider les données
+		** si toutes les données sont valides, ajouter en DB puis rediriger sur la page "student" de l'étudiant ajouté
+	* récupérer toutes les villes de la DB (ou utiliser l'array)
+	* récupérer toutes les sessions de la DB
 	* si tout fonctionne, ajouter les champs suivants (et leur traitement, validation, etc.) :
-		date de naissance, email, sympathie, session (menu d�roulant <select>) et ville (menu d�roulant <select>)
-	
+		date de naissance, email, sympathie, session (menu déroulant <select>) et ville (menu déroulant <select>)
+
 */
 
 /* -- Part 5 = Pagination --
@@ -102,42 +105,42 @@
 
 - demander le cours sur cette partie
 - view/list.php :
-	* ajouter des boutons suivants et pr�c�dents
-	
+	* ajouter des boutons suivants et précédents
+
 - public/list.php :
-	* limiter les r�sultats de la requ�te � 5 �tudiants
-	* mettre en place un syst�me de pagination en passant le num�ro de page dans l'URL : list.php?page=2
-	
+	* limiter les résultats de la requête à 5 étudiants
+	* mettre en place un système de pagination en passant le numéro de page dans l'URL : list.php?page=2
+
 */
 
 /* -- Part 6 = recherche --
 -----------------------------
-	
+
 - view/header.php :
 	* dans la barre de menu, ajouter un formulaire permettant d'effectuer une recherche
-		Ce formulaire renvoie sur list.php avec le mot recherch�e en GET
-	
+		Ce formulaire renvoie sur list.php avec le mot recherchée en GET
+
 - public/list.php :
-	* r�cup�rer le param�tre GET contenant le mot recherch�
+	* récupérer le paramètre GET contenant le mot recherché
 	* si l'ID est fourni :
-		** modifier la requ�te pour filtrer sur le mot recherch� dans les champs textuels suivants :
-			nom/pr�nom/email/ville de l'�tudiant
-		** afficher "x r�sultat(s) pour le mot XX" avant le tableau (<table>) des �tudiants
+		** modifier la requête pour filtrer sur le mot recherché dans les champs textuels suivants :
+			nom/prénom/email/ville de l'étudiant
+		** afficher "x résultat(s) pour le mot XX" avant le tableau (<table>) des étudiants
 
 */
 
 /* -- Part 7 = Home --
 ----------------------
-	
+
 - public/index.php :
-	* r�cup�rer toutes donn�es sur les sessions en DB (nom de la session, num�ro, dates et lieu)
-	* inclure la vue correspondant � la page "home"
-	* afficher toutes les sessions, regroup�es par lieu :
+	* récupérer toutes données sur les sessions en DB (nom de la session, numéro, dates et lieu)
+	* inclure la vue correspondant à la page "home"
+	* afficher toutes les sessions, regroupées par lieu :
 		Fit4Coding Esch-Belval
 		Session 1	01/01/2015	31/12/2015
 		Session 2	01/01/2016	31/12/2016
 		Session 3	01/01/2017	31/12/2017
-		
+
 		Numericall Piennes
 		Session 1	01/04/2015	31/08/2015
 		Session 2	01/05/2016	31/08/2016
@@ -146,101 +149,101 @@
 
 /* -- Part 8 = Liste pour 1 session --
 --------------------------------------
-	
+
 - public/index.php :
-	* mettre un lien sur les noms, dates et lieux dans sessions. Ce lien renvoit sur list.php pour afficher les �tudiants de cette session uniquement (filtre)
-	
+	* mettre un lien sur les noms, dates et lieux dans sessions. Ce lien renvoit sur list.php pour afficher les étudiants de cette session uniquement (filtre)
+
 - public/list.php :
-	* r�cup�rer le param�tre GET contenant l'ID de la session demand�e
+	* récupérer le paramètre GET contenant l'ID de la session demandée
 	* si l'ID est fourni :
-		** modifier la requ�te pour filtrer sur l'ID de session
-		** afficher "Etudiants pour la session n�X � XXX" avant le tableau (<table>) des �tudiants
+		** modifier la requête pour filtrer sur l'ID de session
+		** afficher "Etudiants pour la session n°X à XXX" avant le tableau (<table>) des étudiants
 
 */
 
 /* -- Option 1 = home --
 ------------------------
-	
+
 - public/index.php :
-	* r�cup�rer la statistique suivante (agr�gation) :
-		le nombre d'�tudiants par ville
-	* dans la vue, afficher les villes et leur nombres d'�tudiants, sous forme de tableau (<table>)
-	
+	* récupérer la statistique suivante (agrégation) :
+		le nombre d'étudiants par ville
+	* dans la vue, afficher les villes et leur nombres d'étudiants, sous forme de tableau (<table>)
+
 */
 
-/* -- Option 2 = Suppression �tudiant --
+/* -- Option 2 = Suppression étudiant --
 ----------------------------------------
-	
+
 - public/list.php :
-	* dans la vue, ajouter un bouton "Supprimer" (lien) pour chaque �tudiant
-	* supprimer l'�tudiant dont l'ID est pass� en GET, dans la DB
-	
+	* dans la vue, ajouter un bouton "Supprimer" (lien) pour chaque étudiant
+	* supprimer l'étudiant dont l'ID est passé en GET, dans la DB
+
 */
 
 /* -- Option 3 = Modification --
 --------------------------------
-	
+
 - public/student.php :
 	* dans la vue, ajouter un bouton "Modifier" (lien) qui renvoi sur edit.php
-	* si besoin, cr�er une vue pour "edit"
-	* pr�-remplir le formulaire de modification avec les donn�es de l'�tudiant
-	* g�rer la soumission du formulaire comme pour add.php (r�cup�ration, traitement, validation, update)
-	
+	* si besoin, créer une vue pour "edit"
+	* pré-remplir le formulaire de modification avec les données de l'étudiant
+	* gérer la soumission du formulaire comme pour add.php (récupération, traitement, validation, update)
+
 */
 
 /* -- Option 4 = Organiser son code --
 --------------------------------------
-	
+
 - inc/functions.php :
-	* �crire une fonction pour chaque requ�te SQL. Ces fonctions retourneront le tableau de r�sultats (fetchAll ou tableau format� selon besoin)
-	
+	* écrire une fonction pour chaque requête SQL. Ces fonctions retourneront le tableau de résultats (fetchAll ou tableau formaté selon besoin)
+
 - public/*.php :
-	* il ne doit plus y avoir de requ�tes. Il faut toutes les d�placer dans une fonction dans inc/functions.php
-	* ne pas oublier d'appeler la fonction cr��e, puis de r�cup�rer son r�sultat
-	
+	* il ne doit plus y avoir de requêtes. Il faut toutes les déplacer dans une fonction dans inc/functions.php
+	* ne pas oublier d'appeler la fonction créée, puis de récupérer son résultat
+
 */
 
 /* -- Extra 1 = Add/Edit --
 -------------------------
-	
+
 - public/add.php & public/edit.php :
 	* comme les 2 fichiers sont similaires, faire en sorte d'ajouter et modifier dans un seul et unique fichier
-	
+
 */
 
 /* -- Extra 2 = Filtres --
 ------------------------
-	
+
 - view/list.php :
-	* ajouter un formulaire (en GET) permettant de filtrer les �tudiants par "session", par "training", par date, par statut (session termin�e, active ou future)
+	* ajouter un formulaire (en GET) permettant de filtrer les étudiants par "session", par "training", par date, par statut (session terminée, active ou future)
 
 - public/list.php :
-	* r�cup�rer les donn�es du formulaire de "filtre"
-	* modifier la requ�te pour prendre en compte ces filtres
-	
+	* récupérer les données du formulaire de "filtre"
+	* modifier la requête pour prendre en compte ces filtres
+
 */
 
-/* -- Extra 3 = Nombre de r�sultats par page param�trable --
+/* -- Extra 3 = Nombre de résultats par page paramétrable --
 ------------------------------------------------------------
-	
+
 - view/list.php :
-	* ajouter un formulaire (en GET) permettant de d�finir un nombre de r�sultats par page (<select>)
+	* ajouter un formulaire (en GET) permettant de définir un nombre de résultats par page (<select>)
 
 - public/list.php :
-	* r�cup�rer cette donn�e en GET
-	* modifier le calcul de l'offset, et la requ�te pour prendre en compte ce changement
-	
+	* récupérer cette donnée en GET
+	* modifier le calcul de l'offset, et la requête pour prendre en compte ce changement
+
 */
 
 /* -- Extra 4 = Export --
 -------------------------
-	
+
 - public/list.php :
-	* dans la vue, ajouter un formulaire en POST avec un bouton "Exporter en CSV" (sur la m�me page)
+	* dans la vue, ajouter un formulaire en POST avec un bouton "Exporter en CSV" (sur la même page)
 	* si formulaire export sousmis :
-		** ex�cuter la m�me requ�te (filtres) et r�cup�rer les donn�es
-		** cr�er un fichier export.csv (regarder le format CSV) dans le r�pertoire tmp (� cr�er), avec les donn�es nom, pr�nom, email, date de naissance et ville
-		** renvoyer au navigateur le contenu du fichier csv, avec le bon header HTTP, pour l'internaute t�l�charge le fichier
+		** exécuter la même requête (filtres) et récupérer les données
+		** créer un fichier export.csv (regarder le format CSV) dans le répertoire tmp (à créer), avec les données nom, prénom, email, date de naissance et ville
+		** renvoyer au navigateur le contenu du fichier csv, avec le bon header HTTP, pour l'internaute télécharge le fichier
 		** supprimer le fichier csv
 	
 */
