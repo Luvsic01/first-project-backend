@@ -1,0 +1,9 @@
+### config files
+inc/config.php
+
+### IntelliJ project files
+.idea
+*.iml
+out
+gen
+vendor
