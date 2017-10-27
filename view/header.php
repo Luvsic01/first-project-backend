@@ -5,14 +5,16 @@
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+
 </head>
 
 <body>
-<nav>
-    <div class="nav-wrapper container">
+<nav class="nav-extended teal">
+    <div class="nav-wrapper container ">
         <a href="#" class="brand-logo">WebForce3</a>
         <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-        <ul class="right hide-on-med-and-down">
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
             <li><a href="index.php">Home</a></li>
             <li><a href="index.php">Toutes les sessions</a></li>
             <li><a href="list.php">Toutes les étudiants</a></li>

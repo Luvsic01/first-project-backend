@@ -6,7 +6,7 @@ require_once __DIR__.'/../inc/config.php';
 $idStudent = $_GET['id'];
 
 $requestSqlStudent = "
-    SELECT stu_id, stu_firstname, stu_lastname, stu_email, stu_email, cit_name, stu_friendliness, ses_number, tra_name
+    SELECT stu_id, stu_firstname, stu_lastname, stu_email, stu_birthdate, cit_name, stu_friendliness, ses_number, tra_name
     FROM student
     INNER JOIN city ON city.cit_id = student.city_cit_id
     INNER JOIN session ON session.ses_id = student.session_ses_id
@@ -22,9 +22,6 @@ if ( $pdoStatementStudent->execute() === false ) {
 }
 $resultStudent = $pdoStatementStudent->fetch(PDO::FETCH_ASSOC);
 
-print_r($resultStudent);
-
-$birthdate = '0';
 
 // fin fichier
 require_once __DIR__.'/../view/header.php';

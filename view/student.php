@@ -2,7 +2,7 @@
 <div class="container">
     <div class="row ">
         <div class="col s12 m6 ">
-            <div class="card blue-grey darken-1">
+            <div class="card  teal lighten-2">
                 <div class="card-content white-text">
                     <span class="card-title"><?= $resultStudent['stu_firstname'] ; ?> <?= $resultStudent['stu_lastname'] ; ?></span>
                     <ul>
@@ -10,7 +10,8 @@
                         <li>Prénom : <?= $resultStudent['stu_firstname'] ; ?></li>
                         <li>Nom : <?= $resultStudent['stu_lastname'] ; ?></li>
                         <li>Email : <?= $resultStudent['stu_email'] ; ?></li>
-                        <li>Date de naissance : <?= $birthdate ; ?></li>
+                        <li>Date de naissance : <?= $resultStudent['stu_birthdate'] ; ?></li>
+                        <li>Age : <?= ageUser($resultStudent['stu_birthdate']) ; ?></li>
                         <li>Ville : <?= $resultStudent['cit_name'] ; ?></li>
                         <li>Sympathie : <?= $resultStudent['stu_friendliness'] ; ?></li>
                         <li>Nom session : <?= $resultStudent['tra_name'] ; ?></li>

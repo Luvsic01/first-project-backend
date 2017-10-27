@@ -1,0 +1,14 @@
+{
+    "name": "etudiant/projet-toto",
+    "description": "Gestion des etudiants de session de formation webforce3",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Cyril Giuliani",
+            "email": "giuliani.cyril@gmail.com"
+        }
+    ],
+    "require": {
+        "social-links/social-links": "^1.13"
+    }
+}
