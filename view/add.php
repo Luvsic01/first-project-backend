@@ -1,4 +1,5 @@
-<div class="container">
+<main class="container">
+    <?= $inform; ?>
     <div class="row">
         <h2>Ajouter un Student</h2>
         <form class="col s12" method="post" action="">
@@ -6,13 +7,13 @@
                 <!-- nom -->
                 <div class="input-field col s6">
                     <i class="material-icons prefix">account_circle</i>
-                    <input name="firstname" id="firstname" type="text" class="validate" value="<?php echo $firstname; ?>">
+                    <input required name="firstname" id="firstname" type="text" class="validate" value="<?php echo $firstname; ?>">
                     <label for="firstname">First Name</label>
                 </div>
                 <!-- prenom -->
                 <div class="input-field col s6">
                     <i class="material-icons prefix">account_circle</i>
-                    <input name="lastname" id="lastname" type="text" class="validate" value="<?php echo $lastname; ?>">
+                    <input required name="lastname" id="lastname" type="text" class="validate" value="<?php echo $lastname; ?>">
                     <label for="lastname">Last Name</label>
                 </div>
             </div>
@@ -20,13 +21,13 @@
                 <!-- email -->
                 <div class="input-field col s6">
                     <i class="material-icons prefix">email</i>
-                    <input name="email" id="email" type="email" class="validate">
+                    <input required name="email" id="email" type="email" class="validate">
                     <label for="email">EMAIL</label>
                 </div>
                 <!-- birthdate -->
                 <div class="input-field col s6">
                     <i class="material-icons prefix">perm_contact_calendar</i>
-                    <input name="birthDate" id="birthDate" type="text" class="datepicker" value="">
+                    <input required name="birthDate" id="birthDate" type="text" class="datepicker" value="">
                     <label for="birthdate">Date de naissance</label>
                 </div>
             </div>
@@ -34,7 +35,7 @@
                 <!-- ville -->
                 <div class="input-field col s6">
                     <i class="material-icons prefix">location_city</i>
-                    <select name="city" id="city">
+                    <select required name="city" id="city">
                         <option value="" disabled selected>Ville</option>
                         <?php foreach ($arrayCity as $id=>$name) : ?>
                         <option value="<?= $id ?>"><?= $name ?></option>
@@ -45,7 +46,7 @@
                 <!-- Sympathie -->
                 <div class="input-field col s6">
                     <i class="material-icons prefix">face</i>
-                    <select name="friendliness" id="friendliness">
+                    <select required name="friendliness" id="friendliness">
                         <option value="" disabled selected>Sympathie</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
@@ -60,7 +61,7 @@
                 <!-- N° de session : -->
                 <div class="input-field col s6">
                     <i class="material-icons prefix">poll</i>
-                    <select name="sesId" id="sesId">
+                    <select required name="sesId" id="sesId">
                         <option value="" disabled selected>N° de session</option>
                         <?php foreach ($arraySession as $sesId=>$value) : ?>
                         <option value="<?= $sesId ?>"><?= $value[0] ?> - <?= $value[1] ?></option>
@@ -77,5 +78,5 @@
             </div>
         </form>
     </div>
-</div>
+</main>
 

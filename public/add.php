@@ -43,7 +43,7 @@ $sesId = '';
 $inform = '';
 $displayForm = true;
 $formOk = false;
-print_r($_POST);
+
 // Si $_POST n'est pas vide le formulaire a été soumis
 if (!empty($_POST)) {
     $formOk = true;
@@ -146,12 +146,11 @@ if (!empty($_POST)) {
     }else{
         $inform = "<div class='container red lighten-2 white-text' style='margin-top: 15px;padding: 5px'>{$inform}</div>";
     } // fin d'envoi du formulaire
-}
+}// fin Si $_POST n'est pas vide
 
 
 // fin fichier
 require_once __DIR__.'/../view/header.php';
-echo $inform;
 require_once __DIR__.'/../view/add.php';
 require_once __DIR__.'/../view/footer.php';
 // récupération nom de la ville

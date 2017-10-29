@@ -2,9 +2,25 @@ body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
-
 }
 
 main {
     flex: 1 0 auto;
+}
+
+#details_student{
+    margin-top: 50px;
+}
+
+.pagination li.active {
+    background-color: #009688;
+}
+
+#logo{
+    height: 50px;
+    margin: 5px;
+}
+
+footer{
+    margin-top: 50px;
 }

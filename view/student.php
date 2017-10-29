@@ -1,6 +1,6 @@
 <!--afficher les informations (id, nom, prénom, email, date de naissance, age, ville, sympathie, numéro et nom de session). Attention, l'affichage se fait dans la vue (view) et je ne veux pas de tableau (<table>)-->
-<div class="container">
-    <div class="row ">
+<main class="container">
+    <section id="details_student" class="row ">
         <div class="col s12 m6 ">
             <div class="card  teal lighten-2">
                 <div class="card-content white-text">
@@ -25,5 +25,5 @@
             </div>
         </div>
         <div class="col s12 m6 "><img class="responsive-img circle" src="http://gazettereview.com/wp-content/uploads/2016/03/facebook-avatar-700x441.jpg" alt=""></div>
-    </div>
-</div>
+    </section>
+</main>
