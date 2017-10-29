@@ -37,36 +37,36 @@
     <?php if (empty($search) && empty($session)) : ?>
         <div class="row center-align">
             <ul class="pagination">
-                <?php if ($page == 1) : ?>
+                <?php if ($pagination["page"] == 1) : ?>
                     <li class="disabled"><a href=""><i class="material-icons">first_page</i></a></li>
                     <li class="disabled"><a href=""><i class="material-icons">chevron_left</i></a></li>
                 <?php else: ?>
                     <li><a href="list.php?page=1"><i class="material-icons">first_page</i></a></li>
-                    <li><a href="list.php?page=<?= $page-1 ?>"><i class="material-icons">chevron_left</i></a></li>
+                    <li><a href="list.php?page=<?= $pagination["page"]-1 ?>"><i class="material-icons">chevron_left</i></a></li>
                 <?php endif; ?>
 
-                <?php if( $page > 5 ) : ?>
+                <?php if( $pagination["page"] > 5 ) : ?>
                     <li>...</li>
                 <?php endif; ?>
 
-                <?php for ($i = $page-4; $i <= $page+4; $i++) : ?>
-                    <?php if ($page == $i) : ?>
-                        <li class="active"><a href="list.php?page=<?= $page ?>"><?= $page ?></a></li>
-                    <?php elseif ($i > 0 && $i <= $numberPage) : ?>
+                <?php for ($i = $pagination["page"]-4; $i <= $pagination["page"]+4; $i++) : ?>
+                    <?php if ($pagination["page"] == $i) : ?>
+                        <li class="active"><a href="list.php?page=<?= $pagination["page"] ?>"><?= $pagination["page"] ?></a></li>
+                    <?php elseif ($i > 0 && $i <= $pagination["numberPage"]) : ?>
                             <li class="waves-effect"><a href="list.php?page=<?= $i ?>"><?= $i ?></a></li>
                     <?php endif;  ?>
                 <?php endfor; ?>
 
-                <?php if( $page < $numberPage - 4 ) : ?>
+                <?php if( $pagination["page"] < $pagination["numberPage"] - 4 ) : ?>
                     <li>...</li>
                 <?php endif; ?>
 
-                <?php if ($page == $numberPage) : ?>
+                <?php if ($pagination["page"] == $pagination["numberPage"]) : ?>
                     <li class="disabled"><a href=""><i class="material-icons">chevron_right</i></a></li>
                     <li class="disabled"><a href=""><i class="material-icons">last_page</i></a></li>
                 <?php else: ?>
-                    <li><a href="list.php?page=<?= $page+1 ?>"><i class="material-icons">chevron_right</i></a></li>
-                    <li><a href="list.php?page=<?= $numberPage ?>"><i class="material-icons">last_page</i></a></li>
+                    <li><a href="list.php?page=<?= $pagination["page"]+1 ?>"><i class="material-icons">chevron_right</i></a></li>
+                    <li><a href="list.php?page=<?= $pagination["numberPage"] ?>"><i class="material-icons">last_page</i></a></li>
                 <?php endif; ?>
             </ul>
         </div>

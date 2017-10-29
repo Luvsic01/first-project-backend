@@ -11,7 +11,7 @@
 <body>
 <nav class="nav-extended teal">
     <div class="nav-wrapper container ">
-        <a href="#" class="brand-logo"><img id="logo" src="./img/logoColor.png" alt=""></a>
+        <a href="index.php" class="brand-logo"><img id="logo" src="./img/logoColor.png" alt=""></a>
         <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
             <li><a href="index.php">Home</a></li>
