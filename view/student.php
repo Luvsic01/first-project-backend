@@ -1,6 +1,7 @@
 <!--afficher les informations (id, nom, prénom, email, date de naissance, age, ville, sympathie, numéro et nom de session). Attention, l'affichage se fait dans la vue (view) et je ne veux pas de tableau (<table>)-->
+<?php if(is_numeric($idStudent)) : ?>
 <main class="container">
-    <section id="details_student" class="row ">
+    <section id="details_student" class="row valign-wrapper">
         <div class="col s12 m6 ">
             <div class="card  teal lighten-2">
                 <div class="card-content white-text">
@@ -18,12 +19,9 @@
                         <li>N° de session : <?= $resultStudent['ses_number'] ; ?></li>
                     </ul>
                 </div>
-                <div class="card-action">
-                    <a href="#">This is a link</a>
-                    <a href="#">This is a link</a>
-                </div>
             </div>
         </div>
         <div class="col s12 m6 "><img class="responsive-img circle" src="http://gazettereview.com/wp-content/uploads/2016/03/facebook-avatar-700x441.jpg" alt=""></div>
     </section>
 </main>
+<?php endif; ?>

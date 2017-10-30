@@ -20,19 +20,21 @@
             <li><a href="add.php">Ajout d'un étudiant</a></li>
         </ul>
         <ul class="side-nav" id="mobile-demo">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="index.html">Toutes les sessions</a></li>
+            <li><a href="index.php">Home</a></li>
+            <li><a href="index.php">Toutes les sessions</a></li>
             <li><a href="list.php">Toutes les étudiants</a></li>
             <li><a href="add.php">Ajout d'un étudiant</a></li>
         </ul>
     </div>
     <div class="nav-wrapper container" style="height: 1rem; margin-bottom: 10px;">
-        <form class="teal lighten-2" method="get" action="list.php" style="border-radius: 5px;">
-            <div class="input-field">
-                <input name="search" id="search" type="search" required style="border-radius: 5px;">
-                <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-                <i class="material-icons">close</i>
-            </div>
-        </form>
+        <div class="row">
+            <form class="teal lighten-2" method="get" action="list.php" style="border-radius: 5px;">
+                <div class="input-field">
+                    <input name="search" id="search" type="search" required style="border-radius: 5px;">
+                    <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                    <i class="material-icons">close</i>
+                </div>
+            </form>
+        </div>
     </div>
 </nav>

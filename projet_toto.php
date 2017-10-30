@@ -177,7 +177,6 @@
 - public/list.php :
 	* dans la vue, ajouter un bouton "Supprimer" (lien) pour chaque étudiant
 	* supprimer l'étudiant dont l'ID est passé en GET, dans la DB
-
 */
 
 /* -- Option 3 = Modification --
