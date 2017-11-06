@@ -18,12 +18,14 @@
             <li><a href="index.php">Toutes les sessions</a></li>
             <li><a href="list.php">Toutes les étudiants</a></li>
             <li><a href="add.php">Ajout d'un étudiant</a></li>
+            <li><a href="lots.php">Ajout/Export par lots</a></li>
         </ul>
         <ul class="side-nav" id="mobile-demo">
             <li><a href="index.php">Home</a></li>
             <li><a href="index.php">Toutes les sessions</a></li>
             <li><a href="list.php">Toutes les étudiants</a></li>
             <li><a href="add.php">Ajout d'un étudiant</a></li>
+            <li><a href="lots.php">Ajout/Export par lots</a></li>
         </ul>
     </div>
     <div class="nav-wrapper container" style="height: 1rem; margin-bottom: 10px;">

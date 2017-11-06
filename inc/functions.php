@@ -42,7 +42,7 @@ function cleanVar($var, $type){
 
 // Requete de base
 $requestSqlAllStudents = "
-        SELECT stu_id, stu_firstname, stu_lastname, stu_email, stu_birthdate, cit_name, session_ses_id
+        SELECT stu_id, stu_firstname, stu_lastname, stu_email, stu_birthdate, cit_name, session_ses_id, stu_friendliness
         FROM student
         INNER JOIN city ON city.cit_id = student.city_cit_id
 ";
@@ -199,6 +199,7 @@ function getStudent($id){
     return $pdoStatementStudent->fetch(PDO::FETCH_ASSOC);
 }
 
+// ajoute ou met a jour un student
 function insertUpdateStudent($lastname , $firstname , $birthdate , $email , $friendliness , $sesid , $citid, $id = 0){
     global $pdo;
     $requestSqlAdd = "
@@ -239,3 +240,63 @@ function deleteStudent($id){
         exit();
     }
 }
+
+function cityToId($city){
+    // on recupère les nom de villes et leurs id
+    $arrayCity = cityName();
+    $arrayCity = array_flip($arrayCity);
+    if(array_key_exists($city, $arrayCity)){
+        return $arrayCity[$city];
+    }
+    else{
+        return 0;
+    }
+}
+
+function exportStudent(){
+    global $pdo, $requestSqlAllStudents;
+    $pdoStatement = $pdo->prepare($requestSqlAllStudents);
+    if ($pdoStatement->execute() === false){
+        $pdoStatement->errorInfo();
+        exit();
+    }
+    $allStudent = $pdoStatement->fetchAll(PDO::FETCH_ASSOC);
+    $today = date("Ymd");
+    $fileNameToday = "export-{$today}.csv";
+    // Je vérifie si il existe
+    if (file_exists($fileNameToday)){
+        // Je le suprime;
+        unlink($fileNameToday);
+    }
+    $handle = fopen($fileNameToday, "w");
+    foreach($allStudent as $student){
+        //Name;Firstname;email;Friendliness;Birthdate;City
+        fwrite($handle,"{$student['stu_lastname']};{$student['stu_firstname']};{$student['stu_email']};{$student['stu_friendliness']};{$student['stu_birthdate']};{$student['cit_name']}");
+        fwrite($handle, PHP_EOL);
+    }
+    fclose($handle);
+    $redirection = "export-{$today}.csv";
+    header("Location: $redirection");
+}
+
+function studentExist($email){
+    global $pdo;
+    $requestSqlEmail = "
+        SELECT stu_id
+        FROM student
+        WHERE stu_email = :email
+    ";
+    $pdoStatement = $pdo->prepare($requestSqlEmail);
+    $pdoStatement->bindValue(':email', $email, PDO::PARAM_STR);
+    if ($pdoStatement->execute() === false){
+        print_r($pdo->errorInfo()); // Si erreur on imprime l'erreur
+        exit;
+    }
+    if ($pdoStatement->rowCount() !== 0){
+        $result = $pdoStatement->fetch(PDO::FETCH_ASSOC);
+        return $result['stu_id'];
+    }else {
+        return 0;
+    }
+}
+
