@@ -7,3 +7,5 @@ inc/config.php
 out
 gen
 vendor
+/public/csv/
+/upload/

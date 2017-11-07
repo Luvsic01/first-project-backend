@@ -289,7 +289,7 @@ function studentExist($email){
     $pdoStatement = $pdo->prepare($requestSqlEmail);
     $pdoStatement->bindValue(':email', $email, PDO::PARAM_STR);
     if ($pdoStatement->execute() === false){
-        print_r($pdo->errorInfo()); // Si erreur on imprime l'erreur
+        print_r($pdoStatement->errorInfo()); // Si erreur on imprime l'erreur
         exit;
     }
     if ($pdoStatement->rowCount() !== 0){
@@ -300,3 +300,75 @@ function studentExist($email){
     }
 }
 
+//Fonction check email inscription
+function usrEmailExist($email){
+    global $pdo;
+    $requestSql = "SELECT usr_id FROM users WHERE usr_email = :email";
+    $pdoStatement = $pdo->prepare($requestSql);
+    $pdoStatement->bindValue('email', $email, PDO::PARAM_STR);
+    if ($pdoStatement->execute() === false){
+        print_r($pdoStatement->errorInfo());
+        exit();
+    }
+    if ($pdoStatement->rowCount() > 0){
+        return true;
+    }else {
+        return false;
+    }
+}
+
+function signup($email, $password){
+    global $pdo;
+    $requestSignup = "
+      INSERT INTO users (usr_email, usr_password)
+      VALUES (:email, :password)
+    ";
+    $pdoStatementSignup = $pdo->prepare($requestSignup);
+    $pdoStatementSignup->bindValue(":email", $email, PDO::PARAM_STR);
+    $pdoStatementSignup->bindValue(":password", $password, PDO::PARAM_STR);
+    if ($pdoStatementSignup->execute() === false){
+        print_r($pdoStatementSignup->errorInfo());
+        return false;
+    }else{
+        return true;
+    }
+}
+
+function checkPassword($email, $password){
+    global $pdo;
+    $requestHash = "SELECT usr_password FROM users WHERE usr_email = :email";
+    $pdoStatementCheckPwd = $pdo->prepare($requestHash);
+    $pdoStatementCheckPwd->bindValue(":email", $email, PDO::PARAM_STR);
+    if ($pdoStatementCheckPwd->execute() === false){
+        print_r($pdoStatementCheckPwd->errorInfo());
+        exit();
+    }
+    $result = $pdoStatementCheckPwd->fetch(PDO::FETCH_ASSOC);
+    $hash = $result['usr_password'];
+    if (password_verify($password, $hash)) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+// Fonction pour récupérer l'id
+function getIdUsr($email){
+    global $pdo;
+    $requestIdUsr = "SELECT usr_id FROM users WHERE usr_email = :email";
+    $pdoStatement = $pdo->prepare($requestIdUsr);
+    $pdoStatement->bindValue('email', $email, PDO::PARAM_STR);
+    if ($pdoStatement->execute() === false){
+        print_r($pdoStatement->errorInfo());
+        exit();
+    }
+    $result = $pdoStatement->fetch(PDO::FETCH_ASSOC);
+    return $result['usr_id'];
+}
+
+function createSession($id, $email){
+    session_start();
+    $_SESSION['id'] = $id;
+    $_SESSION['ip'] = $_SERVER["REMOTE_ADDR"];
+    $_SESSION['email'] = $email;
+}

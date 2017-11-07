@@ -1,6 +1,5 @@
 <main class="container">
     <div class="row">
-        <h2>Ajouter/Export par lots</h2>
         <h4>Ajouter par lots</h4>
         <form class="col s12" method="post" action="" enctype="multipart/form-data">
             <?= $infoForm ?>
@@ -21,11 +20,7 @@
                     <select name="sesId" id="sesId">
                         <option value="" disabled selected>N° de session</option>
                         <?php foreach ($arraySession as $key=>$value) : ?>
-                            <?php if ($sesId == $key) : ?>
-                                <option value="<?= $key ?>" class="active selected" selected><?= $value[0] ?> - <?= $value[1] ?></option>
-                            <?php else: ?>
                                 <option value="<?= $key ?>"><?= $value[0] ?> - <?= $value[1] ?></option>
-                            <?php endif; ?>
                         <?php endforeach; ?>
                     </select>
                     <label for="sesId">N° de session</label>
@@ -38,7 +33,7 @@
                 </div>
             </div>
         </form>
-        <h4>Export par lots</h4>
+        <h4>Export de la Base de donnée</h4>
         <form class="col s12" method="post" action="" enctype="multipart/form-data">
             <div class="file-field input-field">
                 <div class='col s10'><p>Exporter la BDD étudiante :</p></div>

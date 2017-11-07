@@ -37,6 +37,8 @@ else { // sinon on execute l'affichage normal des etudiant avec la pagination
     $arrayResultStudent = studentPagination($pagination["limit"], $pagination["offset"]);
 }
 
+// Titre de la page
+$titlePage = "List des étudiants";
 // fin fichier
 require_once __DIR__.'/../view/header.php';
 require_once __DIR__.'/../view/list.php';

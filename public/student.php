@@ -9,7 +9,8 @@ if (is_numeric($idStudent) === true){
     $resultStudent = getStudent($idStudent);
 }
 
-
+// Titre de la page
+$titlePage = "Détails de ";
 // fin fichier
 require_once __DIR__.'/../view/header.php';
 require_once __DIR__.'/../view/student.php';

@@ -75,7 +75,8 @@ if (!empty($_FILES)) {
             if (!$fileOpen) {
                 // si j'ai une erreur de d'ouverture
                 echo "erreur ouverture du fichier";
-            }else{
+            }
+            else{ // si fichier bien ouvert
                 // J'initilise les variables pour l'infoform
                 $ligneInserted = 0;
                 $studentUpdated = 0;
@@ -99,26 +100,28 @@ if (!empty($_FILES)) {
                         $studentUpdated++;
                     }
                 }
+                // Je met l'infoform a jour avec les données reçus
                 $infoForm = "
                     <div class='container green lighten-2 white-text' style='margin-top: 15px;padding: 5px'>
                         {$ligneInserted} étudiant(s) inséré(s)<br>
                         {$studentUpdated} étudiant(s) mis à jour
                     </div>
                     ";
-            }
-            // * fermer le fichier (fclose())
+            } // fin si fichier bien ouvert
+            // ferme le fichier (fclose())
             fclose($fileOpen);
-        }else{
-            'error :( <br>';
+        } // Fin si upload ok
+        else{
+            echo 'error :( <br>';
         }
-    }else{
+    }// fin if formOk
+    else{ // sinon j'affiche ce qui va pas
         $infoForm = "<div class='container red lighten-2 white-text' style='margin-top: 15px;padding: 5px'>{$infoForm}</div>";
     }
+} // fin si empty files
 
-
-
-}
-
+// Titre de la page
+$titlePage = "Import/Export";
 // fin fichier
 require_once __DIR__.'/../view/header.php';
 require_once __DIR__.'/../view/lots.php';

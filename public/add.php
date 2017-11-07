@@ -112,7 +112,8 @@ if (!empty($_POST)) {
     } // fin d'envoi du formulaire
 }// fin Si $_POST n'est pas vide
 
-
+// Titre de la page
+$titlePage = "Ajouter un étudiant";
 // fin fichier
 require_once __DIR__.'/../view/header.php';
 require_once __DIR__.'/../view/add.php';

@@ -15,6 +15,8 @@ foreach ($resultPlace as $place){
 //le nombre d'étudiants par ville
 $arrayStatCity = statCity();
 
+// Titre de la page
+$titlePage = "WebForce3";
 // a la fin de index.php
 require_once __DIR__.'/../view/header.php';
 require_once __DIR__.'/../view/home.php';
