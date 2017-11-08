@@ -1,46 +1,37 @@
-
 <?php
 // Require du fichier de config
 require_once __DIR__.'/../inc/config.php';
 
 // Variables de valideations
 $usrExist = false;
-$pwdOk = false;
 $infoForm = '';
 
 // Si $_POST n'est pas vide le formulaire de connection a été soumis
 if (!empty($_POST)) {
     // Filtrage des variables
-    $email = $_POST['email'] ?? '';
+    $email = $_POST['emailRecovery'] ?? '';
     $email = strtolower( cleanVar($email, 'string') );
-    $pwd = $_POST['password'] ?? '';
-    $pwd = cleanVar($pwd, 'string');
 
     /////////////////////////////////////////
     // Utilisateur existant et mdp Valide ?
     /////////////////////////////////////////
     $usrExist = usrEmailExist($email);
+    var_dump($usrExist);
     if( $usrExist ){
-        $pwdOk = checkPassword($email,$pwd);
+        $token = md5(mt_rand() . $email);
+        echo $token;
+        //todo envoyer email de recovery
+        $infoForm = "Un email à été envoyer à {$email}";
     }// Fin de vérification si utilisateur existe et mdp valide
-
-    /////////////////////////////////////////
-    // Si usr Valide création de la session
-    /////////////////////////////////////////
-    if ($usrExist && $pwdOk){
-        createSession($email);
-        header("Location: index.php");
-        $infoForm = "login OK";
-    }else{
-        $infoForm = 'Utilisateur ou mot de passe invalide';
+    else{
+        $infoForm = "email invalide";
     }
-
 
 }// Fin si $_post n'est pas vide
 
 // Titre de la page
-$titlePage = "Login";
+$titlePage = "Mot de passe oublié";
 // fin fichier
 require_once __DIR__.'/../view/header.php';
-require_once __DIR__.'/../view/login.php';
+require_once __DIR__.'/../view/forgetpwd.php';
 require_once __DIR__.'/../view/footer.php';

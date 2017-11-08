@@ -262,7 +262,7 @@ function exportStudent(){
     }
     $allStudent = $pdoStatement->fetchAll(PDO::FETCH_ASSOC);
     $today = date("Ymd");
-    $fileNameToday = "export-{$today}.csv";
+    $fileNameToday = "./csv/export-{$today}.csv";
     // Je vérifie si il existe
     if (file_exists($fileNameToday)){
         // Je le suprime;
@@ -275,8 +275,7 @@ function exportStudent(){
         fwrite($handle, PHP_EOL);
     }
     fclose($handle);
-    $redirection = "export-{$today}.csv";
-    header("Location: $redirection");
+    header("Location: $fileNameToday");
 }
 
 function studentExist($email){
@@ -317,11 +316,12 @@ function usrEmailExist($email){
     }
 }
 
+//Fonction d'enregistrement d'un user
 function signup($email, $password){
     global $pdo;
     $requestSignup = "
-      INSERT INTO users (usr_email, usr_password)
-      VALUES (:email, :password)
+      INSERT INTO users (usr_email, usr_password, usr_role)
+      VALUES (:email, :password, 'user')
     ";
     $pdoStatementSignup = $pdo->prepare($requestSignup);
     $pdoStatementSignup->bindValue(":email", $email, PDO::PARAM_STR);
@@ -334,6 +334,7 @@ function signup($email, $password){
     }
 }
 
+//Fonction de vérification du password
 function checkPassword($email, $password){
     global $pdo;
     $requestHash = "SELECT usr_password FROM users WHERE usr_email = :email";
@@ -366,9 +367,108 @@ function getIdUsr($email){
     return $result['usr_id'];
 }
 
-function createSession($id, $email){
+// Fonction pour récupérer le role
+function getrole($email){
+    global $pdo;
+    $requestRole = "SELECT usr_role FROM users WHERE usr_email = :email";
+    $pdoStatement = $pdo->prepare($requestRole);
+    $pdoStatement->bindValue('email', $email, PDO::PARAM_STR);
+    if ($pdoStatement->execute() === false){
+        print_r($pdoStatement->errorInfo());
+        exit();
+    }
+    $result = $pdoStatement->fetch(PDO::FETCH_ASSOC);
+    return $result['usr_role'];
+}
+
+// Fonction pour avoir l'email
+function getEmailUser($id){
+    global $pdo;
+    $requestEmail = "SELECT usr_email FROM users WHERE usr_id = :id";
+    $pdoStatement = $pdo->prepare($requestEmail);
+    $pdoStatement->bindValue('id', $id, PDO::PARAM_INT);
+    if ($pdoStatement->execute() === false){
+        print_r($pdoStatement->errorInfo());
+        exit();
+    }
+    $result = $pdoStatement->fetch(PDO::FETCH_ASSOC);
+    return $result['usr_email'];
+}
+
+// Fonction de création de la session
+function createSession($email){
     session_start();
-    $_SESSION['id'] = $id;
+    $_SESSION['id'] = getIdUsr($email);
     $_SESSION['ip'] = $_SERVER["REMOTE_ADDR"];
     $_SESSION['email'] = $email;
+    $_SESSION['role'] = getRole($email);
+}
+
+// List de tout les user
+function allUsers(){
+    global $pdo;
+    $requestAllUsers = "SELECT * FROM users";
+    $pdoStatementUsers = $pdo->prepare($requestAllUsers);
+    if ($pdoStatementUsers->execute() === false){
+        print_r($pdoStatementUsers->errorInfo());
+        exit;
+    }
+    return $pdoStatementUsers->fetchAll(PDO::FETCH_ASSOC);
+}
+
+// Update role de l'utilisateur
+function updateRole($id,$newRole){
+    global $pdo;
+    $requestUpdateRole = "UPDATE users SET usr_role=:role WHERE usr_id=:id";
+    $pdoStatementRole = $pdo->prepare($requestUpdateRole);
+    $pdoStatementRole->bindValue(":role", $newRole, PDO::PARAM_STR);
+    $pdoStatementRole->bindValue(":id",$id,PDO::PARAM_INT);
+    if ($pdoStatementRole->execute() === false){
+        print_r($pdoStatementRole->errorInfo());
+        exit;
+    }
+}
+
+// Import PHPMailer classes into the global namespace
+// These must be at the top of your script, not inside a function
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+function sendEmail($to, $subject, $htmlContent, $texContent=''){
+    global $config;
+    $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
+    try {
+        //Server settings
+        $mail->isSMTP();                                      // Set mailer to use SMTP
+        $mail->Host = 'smtp.gmail.com';                       // Specify main and backup SMTP servers
+        $mail->SMTPAuth = true;                               // Enable SMTP authentication
+        $mail->Username = $config['EMAIL'];                 // SMTP username
+        $mail->Password = $config['EMAIL_PWD'];                           // SMTP password
+        $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
+        $mail->Port = 587;                                    // TCP port to connect to
+
+        $mail->SMTPOptions = array(
+            'ssl' => array(
+                'verify_peer' => false,
+                'verify_peer_name' => false,
+                'allow_self_signed' => true
+            )
+        );
+
+        //Recipients
+        $mail->setFrom('chiburi91@gmail.com', "Admin");
+        $mail->addAddress($to, '');     // Add a recipient
+
+        //Content
+        $mail->isHTML(true);                                  // Set email format to HTML
+        $mail->Subject = $subject;
+        $mail->Body = $htmlContent;
+        $mail->AltBody = $texContent;
+
+        $mail->send();
+        return true;
+    } catch (Exception $e) {
+        echo 'Message could not be sent.';
+        echo 'Mailer Error: ' . $mail->ErrorInfo;
+        return false;
+    }
 }

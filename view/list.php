@@ -5,7 +5,7 @@
     <?php elseif(!empty($session)) : ?>
         <h2><?= $countNbStudentSession ?> étudiant(s) dans la session <?= $session ?></h2>
     <?php else: ?>
-        <h2>Touts les étudiants</h2>
+        <h2>Tous les étudiants</h2>
     <?php endif; ?>
     <div class="row">
         <form method="get" action="" class="valign-wrapper">
@@ -41,7 +41,7 @@
             </div>
         </form>
     </div>
-    <table class="striped">
+    <table class="highlight">
         <thead>
         <tr>
             <th>ID</th>
@@ -62,29 +62,33 @@
                 <td><?= $student['stu_email'] ; ?></td>
                 <td><?= $student['stu_birthdate'] ; ?></td>
                 <td><?= $student['cit_name'] ; ?></td>
-                <td>
-                    <!-- button view student -->
-                    <a class="btn-floating waves-effect waves-light green" href="student.php?id=<?= $student['stu_id'] ; ?>"><i class="material-icons">search</i></a>
-                    <!-- button edit -->
-                    <a class="btn-floating waves-effect waves-light blue" href="add.php?id=<?= $student['stu_id'] ; ?>"><i class="material-icons">mode_edit</i></a>
-                    <!-- Modal Trigger delete -->
-                    <a class="btn-floating waves-effect waves-light red modal-trigger" href="#modal<?= $student['stu_id'] ; ?>"><i class="material-icons">delete</i></a>
-                    <!-- Modal Structure -->
-                    <div id="modal<?= $student['stu_id'] ; ?>" class="modal">
-                        <div class="modal-content">
-                            <h4>Êtes-vous sûr de vouloir supprimer définitivement <?= $student['stu_lastname'] ; ?> <?= $student['stu_firstname'] ; ?>?</h4>
-                            <p>Toute suppression est definitive.</p>
-                        </div>
-                        <div class="modal-footer">
-                            <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Non</a>
-                            <?php if (isset($pagination['page'])) : ?>
-                                <a href="delete.php?id=<?= $student['stu_id'] ; ?>&page=<?= $pagination['page'] ?>" class="modal-action modal-close waves-effect waves-green btn-flat">Oui</a>
-                            <?php else: ?>
-                                <a href="delete.php?id=<?= $student['stu_id'] ; ?>" class="modal-action modal-close waves-effect waves-green btn-flat">Oui</a>
-                            <?php endif; ?>
-                        </div>
-                    </div> <!-- Fin Modal-->
-                </td>
+                <?php if (isset($_SESSION['role'])) : ?>
+                    <td>
+                        <!-- button view student -->
+                        <a class="btn-floating waves-effect waves-light green" href="student.php?id=<?= $student['stu_id'] ; ?>"><i class="material-icons">search</i></a>
+                        <?php if( $_SESSION['role'] === 'admin' ) : ?>
+                            <!-- button edit -->
+                            <a class="btn-floating waves-effect waves-light blue" href="add.php?id=<?= $student['stu_id'] ; ?>"><i class="material-icons">mode_edit</i></a>
+                            <!-- Modal Trigger delete -->
+                            <a class="btn-floating waves-effect waves-light red modal-trigger" href="#modal<?= $student['stu_id'] ; ?>"><i class="material-icons">delete</i></a>
+                            <!-- Modal Structure -->
+                            <div id="modal<?= $student['stu_id'] ; ?>" class="modal">
+                                <div class="modal-content">
+                                    <h4>Êtes-vous sûr de vouloir supprimer définitivement <?= $student['stu_lastname'] ; ?> <?= $student['stu_firstname'] ; ?>?</h4>
+                                    <p>Toute suppression est definitive.</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Non</a>
+                                    <?php if (isset($pagination['page'])) : ?>
+                                        <a href="delete.php?id=<?= $student['stu_id'] ; ?>&page=<?= $pagination['page'] ?>" class="modal-action modal-close waves-effect waves-green btn-flat">Oui</a>
+                                    <?php else: ?>
+                                        <a href="delete.php?id=<?= $student['stu_id'] ; ?>" class="modal-action modal-close waves-effect waves-green btn-flat">Oui</a>
+                                    <?php endif; ?>
+                                </div>
+                            </div> <!-- Fin Modal-->
+                        <?php endif; ?>
+                    </td>
+                <?php endif; ?>
             </tr>
         <?php endforeach; ?>
         </tbody>

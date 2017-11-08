@@ -2,7 +2,7 @@
 <h2>Liste des Formations</h2>
     <?php foreach ($arrayFormation as $formation=>$arraySession) : ?>
         <h4><?= $formation ?></h4>
-        <table>
+        <table class="highlight">
             <thead>
             <tr>
                 <th>Session n°</th>
@@ -18,7 +18,9 @@
                     <td><?= $session['ses_start_date'] ?></td>
                     <td><?= $session['ses_end_date'] ?></td>
                     <td><?= $session['loc_name'] ?></td>
-                    <td><a class="btn-floating waves-effect waves-light teal" href="list.php?session=<?= $session['ses_id'] ; ?>"><i class="material-icons">search</i></a></td>
+                    <?php if (isset($_SESSION['role'])) : ?>
+                        <td><a class="btn-floating waves-effect waves-light green" href="list.php?session=<?= $session['ses_id'] ; ?>"><i class="material-icons">search</i></a></td>
+                    <?php endif; ?>
                 </tr>
             <?php endforeach; ?>
             </tbody>
@@ -27,7 +29,7 @@
 
     <h2>Statistiques</h2>
     <h4>Etudiant par ville</h4>
-    <table>
+    <table class="highlight">
         <thead>
         <tr>
             <th>Ville</th>

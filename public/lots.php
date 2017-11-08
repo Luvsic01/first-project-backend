@@ -124,5 +124,15 @@ if (!empty($_FILES)) {
 $titlePage = "Import/Export";
 // fin fichier
 require_once __DIR__.'/../view/header.php';
-require_once __DIR__.'/../view/lots.php';
+
+if (isset($_SESSION['role'])){
+    if ($_SESSION['role'] === 'admin'){
+        require_once __DIR__.'/../view/lots.php';
+    }else{
+        require_once __DIR__.'/../view/403.php';
+    }
+}else{
+    header("Location: login.php");
+}
+
 require_once __DIR__.'/../view/footer.php';

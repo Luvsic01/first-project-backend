@@ -57,7 +57,8 @@ if (!empty($_POST)) {
         $options = [ 'cost' => 12];
         $signupOk = signup($email, password_hash($pwd, PASSWORD_BCRYPT, $options));
         if ($signupOk){
-            $infoForm .= "Inscription OK";
+            createSession($email);
+            header("Location: index.php");
         }else{
             $infoForm .= "Problème lors de l'inscription";
             $formInscriptOk = false;

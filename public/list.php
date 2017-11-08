@@ -41,5 +41,15 @@ else { // sinon on execute l'affichage normal des etudiant avec la pagination
 $titlePage = "List des étudiants";
 // fin fichier
 require_once __DIR__.'/../view/header.php';
-require_once __DIR__.'/../view/list.php';
+
+if (isset($_SESSION['role'])){
+    if ($_SESSION['role'] === 'admin' || $_SESSION['role'] === 'user'){
+        require_once __DIR__.'/../view/list.php';
+    }else{
+        header("Location: login.php");
+    }
+}else{
+    header("Location: login.php");
+}
+
 require_once __DIR__.'/../view/footer.php';

@@ -9,6 +9,7 @@
         }
     ],
     "require": {
-        "social-links/social-links": "^1.13"
+        "social-links/social-links": "^1.13",
+        "phpmailer/phpmailer": "^6.0"
     }
 }

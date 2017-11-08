@@ -1,8 +1,6 @@
 <main class="container">
     <div class="row">
-        <?php if ($usrExist && $pwdOk && !empty($_POST)) : ?>
-            <div class='container green lighten-2 white-text' style='margin-top: 15px;padding: 5px'><?= $infoForm ?></div>
-        <?php elseif (!empty($_POST)): ?>
+        <?php if (!empty($_POST)): ?>
             <div class='container red lighten-2 white-text' style='margin-top: 15px;padding: 5px'><?= $infoForm ?></div>
         <?php endif; ?>
     </div>
@@ -24,6 +22,9 @@
                             <input name="password" id="password" type="password" class="validate" data-delay="50">
                             <label class="teal-text" for="password">Password</label>
                         </div>
+                    </div>
+                    <div class="row right-align">
+                        <a href="forgetpwd.php" style="color: teal; text-align: right; height: 20px; font-size: 12px; font-style: italic; margin-right: 15px;">Mots de passe oublié</a>
                     </div>
                     <div class="row right-align">
                         <div class="card-action" style="border: none;">

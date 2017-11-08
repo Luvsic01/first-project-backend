@@ -4,7 +4,7 @@
         <a class="grey-text text-lighten-3" href="<?= $socialLinksPage->twitter->shareUrl ?>">Twitter</a> |
         <a class="grey-text text-lighten-3" href="<?= $socialLinksPage->linkedin->shareUrl ?>">Linkedin</a> |
     </p>
-    <div class="footer-copyright  teal">
+    <div class="footer-copyright   blue-grey darken-4">
         <div class="container center-align">
             © <?php echo date("Y"); ?> | Tous droits réservés
         </div>

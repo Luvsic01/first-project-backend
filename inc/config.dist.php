@@ -1,11 +1,15 @@
 <?php
+// Le session
+require_once  __DIR__."/session.php";
 
 // Données de configuration de la database
 $config = array(
     'DB_HOST' => '',
     'DB_USER' => '',
     'DB_PASSWORD' => '',
-    'DB_DATABASE' => ''
+    'DB_DATABASE' => '',
+    'EMAIL'=>'',
+    'EMAIL_PWD'=> ''
 );
 
 // Inclusions de fichiers
@@ -24,4 +28,3 @@ $socialLinksPage = new SocialLinks\Page([
     'icon' => '',
     'twitterUser' => '@twitterUser'
 ]);
-

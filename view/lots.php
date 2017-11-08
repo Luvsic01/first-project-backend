@@ -27,7 +27,7 @@
                 </div>
                 <!--button submit -->
                 <div class=" col s2" style="padding-top: 15px;">
-                    <button class="btn waves-effect waves-light" type="submit">Envoyer
+                    <button class="btn waves-effect waves-light green" type="submit">Envoyer
                         <i class="material-icons right">send</i>
                     </button>
                 </div>
@@ -40,7 +40,7 @@
                 <input type="hidden" name="export" value="1" />
                 <!--button submit -->
                 <div class=" col s2" style="padding-top: 15px;">
-                    <button class="btn waves-effect waves-light" type="submit">Export
+                    <button class="btn waves-effect waves-light blue" type="submit">Exporter
                         <i class="material-icons right">send</i>
                     </button>
                 </div>
