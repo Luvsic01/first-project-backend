@@ -19,7 +19,7 @@ if (!empty($_POST)) {
     var_dump($usrExist);
     if( $usrExist ){
         $token = md5(mt_rand() . $email);
-        echo $token;
+        echo "http://projet-toto.dev/forgetpwd.php?reset=".$token;
         //todo envoyer email de recovery
         $infoForm = "Un email à été envoyer à {$email}";
     }// Fin de vérification si utilisateur existe et mdp valide
