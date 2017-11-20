@@ -1,12 +1,8 @@
 <main class="container">
-    <?= $inform; ?>
+    <div id="infoform"></div>
     <div class="row">
-        <?php if (!empty($id)) : ?>
-            <h2>Modifier un étudiant</h2>
-        <?php else : ?>
-            <h2>Ajouter un étudiant</h2>
-        <?php endif; ?>
-        <form class="col s12" method="post" action="">
+        <h2><?= $titlePage ?></h2>
+        <form id="formAdd" class="col s12" method="post" action="" data-id="<?php if (!empty($id)) : ?><?= $id?><?php else : ?>false<?php endif; ?>">
             <div class="row">
                 <!-- nom -->
                 <div class="input-field col s6">

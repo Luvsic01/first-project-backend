@@ -65,7 +65,8 @@
                 <?php if (isset($_SESSION['role'])) : ?>
                     <td>
                         <!-- button view student -->
-                        <a class="btn-floating waves-effect waves-light green" href="student.php?id=<?= $student['stu_id'] ; ?>"><i class="material-icons">search</i></a>
+                        <a class="btn-floating waves-effect waves-light green btn modal-trigger student-details" href="#modalStudent"  data-id="<?= $student['stu_id'] ; ?>"><i class="material-icons">search</i></a>
+                        <!--<a class="btn-floating waves-effect waves-light green" href="student.php?id=<?/*= $student['stu_id'] ; */?>"><i class="material-icons">search</i></a>-->
                         <?php if( $_SESSION['role'] === 'admin' ) : ?>
                             <!-- button edit -->
                             <a class="btn-floating waves-effect waves-light blue" href="add.php?id=<?= $student['stu_id'] ; ?>"><i class="material-icons">mode_edit</i></a>
@@ -93,6 +94,14 @@
         <?php endforeach; ?>
         </tbody>
     </table>
+
+    <!-- Modal Student -->
+    <div id="modalStudent" class="modal" style="max-width: 550px">
+        <div class="modal-content"> </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">OK</a>
+        </div>
+    </div>
 
     <!-- Pagination si ce n'est pas une recherche -->
     <?php if (empty($search) && empty($session)) : ?>

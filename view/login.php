@@ -1,7 +1,7 @@
 <main class="container">
     <div class="row">
         <?php if (!empty($_POST)): ?>
-            <div class='container red lighten-2 white-text' style='margin-top: 15px;padding: 5px'><?= $infoForm ?></div>
+            <div id="infoForm" class='container red lighten-2 white-text' style='margin-top: 15px;padding: 5px'><?= $infoForm ?></div>
         <?php endif; ?>
     </div>
     <div class="row">

@@ -472,3 +472,61 @@ function sendEmail($to, $subject, $htmlContent, $texContent=''){
         return false;
     }
 }
+
+function saveTokenReset($email, $token){
+    global $pdo;
+    $requestToken = "UPDATE users
+        SET usr_token = :token
+        WHERE usr_email = :email
+    ";
+    $pdoStatement = $pdo->prepare($requestToken);
+    $pdoStatement->bindValue('token', $token, PDO::PARAM_STR);
+    $pdoStatement->bindValue('email', $email, PDO::PARAM_STR);
+    if ($pdoStatement->execute() === false){
+        print_r($pdoStatement->errorInfo());
+        return false;
+    }
+    return true;
+}
+
+function resetPwd($password, $token){
+    global $pdo;
+    $requestPwd = "
+        UPDATE users 
+        SET usr_password = :password, usr_token = ''
+        WHERE usr_token = :token
+    ";
+    $pdoStatementPwd = $pdo->prepare($requestPwd);
+    $options = [ 'cost' => 12];
+    $pdoStatementPwd->bindValue(":password", password_hash($password, PASSWORD_BCRYPT, $options), PDO::PARAM_STR);
+    $pdoStatementPwd->bindValue(":token",$token,PDO::PARAM_INT);
+    if ($pdoStatementPwd->execute() === false){
+        print_r($pdoStatementPwd->errorInfo());
+        exit;
+    }
+}
+function tokenValid($token){
+    global $pdo;
+    $tokenValid = false;
+    $requestToken = "
+        SELECT usr_updated 
+        FROM users
+        WHERE usr_token = :token
+    ";
+    $pdoStatement = $pdo->prepare($requestToken);
+    $pdoStatement->bindValue(":token",$token,PDO::PARAM_INT);
+    if ($pdoStatement->execute() === false){
+        print_r($pdoStatement->errorInfo());
+        exit;
+    }else{
+        $updated = $pdoStatement->fetch(PDO::FETCH_ASSOC);
+        if ($updated != false){
+            $updatedTimestamp = strtotime($updated['usr_updated']);
+            $timestamp15min = strtotime("-15 minutes");
+            if ($timestamp15min < $updatedTimestamp){
+                $tokenValid = true;
+            }
+        }
+    }
+    return $tokenValid;
+}

@@ -46,7 +46,6 @@ if (!empty($_POST)) {
             $infoForm .= 'Le mot de passe ne réspecte pas les règles de compléxités<br>';
             $formInscriptOk = false;
         }
-
     }
 
     /////////////////////////////
