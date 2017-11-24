@@ -8,8 +8,8 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-<nav class="nav-extended teal lighten-2">
-    <div class="teal">
+<nav class="nav-extended light-blue lighten-2">
+    <div class="light-blue">
         <div class="nav-wrapper container ">
             <a href="index.php" class="brand-logo"><img id="logo" src="./img/logo.png" alt=""></a>
             <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
@@ -46,12 +46,12 @@
         </div>
     </div>
     <?php if (isset($_SESSION['id'])) : ?>
-        <div class="teal lighten-2">
+        <div class="light-blue lighten-2">
             <div class="nav-wrapper" style="height: 1rem; margin: 2px;">
-                <form class="container teal lighten-2" method="get" action="list.php" style="border-radius: 5px;">
-                    <div class="input-field">
-                        <input name="search" id="search" type="search" required style="border-radius: 5px;">
-                        <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                <form class="container light-blue lighten-2" method="get" action="list.php" style="border-radius: 5px;">
+                    <div class="input-field ">
+                        <input name="search" id="search" type="search" required style="border-radius: 5px;" class="">
+                        <label class="label-icon" for="search"><i class="material-icons" >search</i></label>
                         <i class="material-icons">close</i>
                     </div>
                 </form>

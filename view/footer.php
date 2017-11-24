@@ -1,4 +1,4 @@
-<footer class="page-footer center-align teal lighten-2">
+<footer class="page-footer center-align light-blue lighten-2">
     <p >
         <a class="grey-text text-lighten-3" href="<?= $socialLinksPage->facebook->shareUrl ?>">Facebook</a> |
         <a class="grey-text text-lighten-3" href="<?= $socialLinksPage->twitter->shareUrl ?>">Twitter</a> |

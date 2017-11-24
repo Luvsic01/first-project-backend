@@ -12,7 +12,7 @@
             <div class="col s6"></div>
             <div class="col s2">
                 <label>Résultats par page</label>
-                <select name="nbPage" class="browser-default">
+                <select name="nbPage" class="">
                     <option value="" disabled selected>--</option>
                     <option value="5">5</option>
                     <option value="10">10</option>
@@ -23,7 +23,7 @@
             </div>
             <div class="col s2">
                 <label>Filtré par session</label>
-                <select name="session" class="browser-default">
+                <select name="session" class="">
                     <option value="" disabled selected>--</option>
                     <?php foreach ($arraySession as $key=>$value) : ?>
                         <?php if ($sesId == $key) : ?>
@@ -35,7 +35,7 @@
                 </select>
             </div>
             <div class="col s2">
-                <button class="btn waves-effect waves-light" type="submit" style="margin-top: 20px;">Filtrer
+                <button class="btn waves-effect waves-light light-blue" type="submit" style="margin-top: 20px;">Filtrer
                     <i class="material-icons right">send</i>
                 </button>
             </div>
@@ -121,7 +121,7 @@
 
                 <?php for ($i = $pagination["page"]-4; $i <= $pagination["page"]+4; $i++) : ?>
                     <?php if ($pagination["page"] == $i) : ?>
-                        <li class="active"><a href="list.php?page=<?= $pagination["page"] ?>&nbPage=<?= $pagination["limit"] ?>"><?= $pagination["page"] ?></a></li>
+                        <li class="active light-blue"><a href="list.php?page=<?= $pagination["page"] ?>&nbPage=<?= $pagination["limit"] ?>"><?= $pagination["page"] ?></a></li>
                     <?php elseif ($i > 0 && $i <= $pagination["numberPage"]) : ?>
                         <li class="waves-effect"><a href="list.php?page=<?= $i ?>&nbPage=<?= $pagination["limit"] ?>"><?= $i ?></a></li>
                     <?php endif;  ?>

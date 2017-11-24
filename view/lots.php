@@ -6,7 +6,7 @@
             <div class="file-field input-field">
                 <!-- fichier -->
                 <div class='file-field input-field col s6'>
-                    <div class="btn">
+                    <div class="btn light-blue">
                         <span>Fichier</span>
                         <input type="hidden" name="MAX_FILE_SIZE" value="100000" />
                         <input type="file" name="file">

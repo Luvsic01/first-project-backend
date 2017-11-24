@@ -24,3 +24,14 @@ main {
 footer{
     margin-top: 50px;
 }
+ul.select-dropdown li span{
+    color: #03a9f4;
+}
+#logo{
+    transition-duration: 0.2s;
+}
+@media screen and (max-width: 1650px) {
+    #logo{
+        display: none;
+    }
+}

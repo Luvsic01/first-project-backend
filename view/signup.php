@@ -8,7 +8,7 @@
     </div>
     <div class="row">
         <div class="col s12 l6 offset-l3 ">
-            <div class="card teal lighten-2" style="padding: 10px; height: 470px;">
+            <div class="card light-blue lighten-2" style="padding: 10px; height: 470px;">
                 <div class="card-content white-text">
                     <span class="card-title">Inscription</span>
                 </div>
@@ -34,7 +34,7 @@
                     </div>
                     <div class="row right-align">
                         <div class="card-action" style="border: none;">
-                            <button class="btn waves-effect waves-light white teal-text" type="submit" name="action">Inscription
+                            <button class="btn waves-effect waves-light white light-blue-text" type="submit" name="action">Inscription
                                 <i class="material-icons right">send</i>
                             </button>
                         </div>

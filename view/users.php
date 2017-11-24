@@ -29,7 +29,7 @@
                                     <option value="admin">Admin</option>
                                 <?php endif; ?>
                             </select>
-                            <button class="col btn waves-effect waves-light" type="submit" name="action" style="margin: 10px 15px;">Mettre à jour
+                            <button class="col btn waves-effect waves-light light-blue" type="submit" name="action" style="margin: 10px 15px;">Mettre à jour
                                 <i class="material-icons left">update</i>
                             </button>
                         </form>
